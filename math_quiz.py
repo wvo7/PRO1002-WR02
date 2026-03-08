@@ -17,22 +17,29 @@ nr2 = random.randint(1,13)
 
 correct_answer = nr1 + nr2
 
-# User prompt
+# Give user 3 chances to get the answer right / provide valid number.
 
-user_input = input(f"What's {nr1} + {nr2}?\n")
+for attempt in range(1,4):
+    # User prompt
+    user_input = input(f"What's {nr1} + {nr2}?\n")
 
-# Exception handling
+    # Exception handling
 
-try:
-    # Attempting to convert user input from string to integer.
-    user_guess = int(user_input)
+    try:
+        # Attempting to convert user input from string to integer.
+        user_guess = int(user_input)
 
-    # Check if the user's answer is correct
-    if user_guess == correct_answer:
-        print('You got it!')
-    else:
-        print(f'The number we were looking for was {correct_answer}. Better luck next time!')
+        # Check if the user's answer is correct
+        if user_guess == correct_answer:
+            print("You got it!\nDon't be to smug; it's basic math.")
+            break # Escape the loop
+        else:
+            print(f'Wrong. You have {3 - attempt} attempts left. Try again!')
 
-except ValueError:
-    # Only runs if the user doesn't type a number
-    print('We only accept whole number in this math quiz. Try again.')
+    except ValueError:
+        # Only runs if the user doesn't type a number
+        print('We only accept whole number in this math quiz. Try again.')
+
+else:
+    print(f'The answer was {correct_answer}.')
+    print("You're either not taking this seriously, or exceptionally bad at math.\nEither way; I quit.")
