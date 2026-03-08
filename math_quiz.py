@@ -17,6 +17,10 @@ nr2 = random.randint(1,13)
 
 correct_answer = nr1 + nr2
 
+# Introducing our quiz master
+
+print("Hello! I'm Ellie, and I'll be your math quiz master for today!")
+
 # Give user 3 chances to get the answer right / provide valid number.
 
 for attempt in range(1,4):
