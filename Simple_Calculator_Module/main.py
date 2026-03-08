@@ -5,14 +5,28 @@
 
 import calculator
 
+# Introduce our Calculator persona
+
+print("Hello! I'm Ellie, and I'll be your calculatoring assistant today!\nLet's do some math!")
+
 # Ask the user for two numbers and an operation.
 
 def run_calculator():
     try:
         # User input.
-        nr1 = float(input('Enter first number: '))
-        nr2 = float(input('Enter second number: '))
-        operation = input('Choose operation: ')
+        input_str1 = input('Enter your first number: ')
+        input_str2 = input('Enter your second number: ')
+        operation = input('And choose operation: ')
+
+        # Convert to float.
+        nr1 = float(input_str1)
+        nr2 = float(input_str2)
+
+        # Checking if inputs are single digits (Ellie doesn't like that)
+        if 0 <= nr1 <= 9 and 0 <= nr2 <= 9 and operation !='/':
+            print('Do you really need my help with single-digit math, or are you just insulting my intelligence?')
+            print("I'm not gonna entertain this nonsense.")
+            return
 
         # Perform the operation, and if the user chooses division by zero, handle the ZeroDivisionError and print an error message.
         if operation == '+':
@@ -24,15 +38,15 @@ def run_calculator():
         elif operation == '/':
             result = calculator.divide(nr1,nr2)
         else:
-            print("Invalid operation. Use +, -, *, or /.")
+            print("Don't you know what an operation is?\nI'll help you out: +, -, *, or /.")
             return
         
         # Print the result of the calculation.
-        print(f'The result is: {result}.')
+        print(f'The result is: {result}. Yay math!')
 
     except ValueError:
-        print('Error. Enter a valid number.')
-    except ZeroDivisionError as zero_error:
-        print(f'Error: {zero_error}')
+        print("404. That's no number of mine.")
+    except ZeroDivisionError:
+        print(f'Dividing 0 by 0 is a crime around here.\nAre you trying to crash me?? Get outta here.')
 
 run_calculator()
