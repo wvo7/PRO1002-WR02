@@ -15,6 +15,6 @@ def local_scope_demo():
 
 print(f"Outside (Global): {ellie_persona}")
 local_scope_demo()
-print(f"Outside again (Global):{ellie_persona}")
+print(f"Outside again (Global): {ellie_persona}")
 
 # The global Ellie remains unchanged because the local assignment only existed withing the local_scope_demo namespace.
